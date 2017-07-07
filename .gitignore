@@ -11,3 +11,14 @@
 *.zip
 *.tar.gz
 *.rar
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+###my own###
+logs
+target
+jdbc-druid-config.properties
