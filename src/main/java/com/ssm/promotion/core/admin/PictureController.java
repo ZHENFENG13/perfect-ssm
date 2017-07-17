@@ -2,14 +2,10 @@ package com.ssm.promotion.core.admin;
 
 import com.ssm.promotion.core.common.Result;
 import com.ssm.promotion.core.common.ResultGenerator;
-import com.ssm.promotion.core.entity.Article;
 import com.ssm.promotion.core.entity.PageBean;
 import com.ssm.promotion.core.entity.Picture;
 import com.ssm.promotion.core.service.PictureService;
 import com.ssm.promotion.core.util.DateUtil;
-import com.ssm.promotion.core.util.ResponseUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -66,34 +62,6 @@ public class PictureController {
         return result;
     }
 
-    /**
-     * 保存或修改
-     *
-     * @param picture
-     * @param response
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping("/save")
-    public String save(Picture picture, HttpServletResponse response)
-            throws Exception {
-        int resultTotal = 0;
-        if (picture.getId() == null) {
-            picture.setTime(DateUtil.getCurrentDateStr());
-            resultTotal = pictureService.addPicture(picture);
-        } else {
-            resultTotal = pictureService.updatePicture(picture);
-        }
-        JSONObject result = new JSONObject();
-        if (resultTotal > 0) {
-            result.put("success", true);
-        } else {
-            result.put("success", false);
-        }
-        log.info("request: picture/save ,  " + picture.toString());
-        ResponseUtil.write(response, result);
-        return null;
-    }
 
     /**
      * 添加
