@@ -6,16 +6,12 @@ import com.ssm.promotion.core.entity.Article;
 import com.ssm.promotion.core.entity.PageBean;
 import com.ssm.promotion.core.service.ArticleService;
 import com.ssm.promotion.core.util.DateUtil;
-import com.ssm.promotion.core.util.ResponseUtil;
 import com.ssm.promotion.core.util.StringUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
