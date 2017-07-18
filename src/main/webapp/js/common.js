@@ -26,8 +26,10 @@ function checkCookie() {
         alert("未登录!");
         window.location.href = "login.jsp";
     }
-    else {
-        alert("userName:" + getCookie("userName"));
-    }
 }
 
+function clearCookie() {
+    delCookie("userName");
+    delCookie("roleName");
+    window.location.href = "login.jsp";
+}
