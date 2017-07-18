@@ -99,6 +99,7 @@
 
 <script type="text/javascript">
     var url;
+    var method;
     function ResetEditor() {
         UE.getEditor('myEditor', {
             initialFrameHeight: 480,
@@ -138,25 +139,33 @@
                         + "</font>条数据吗？",
                         function (r) {
                             if (r) {
-                                $
-                                        .post(
-                                                "${pageContext.request.contextPath}/article/delete.do",
-                                                {
-                                                    ids: ids
-                                                },
-                                                function (result) {
-                                                    if (result.success) {
-                                                        $.messager.alert(
-                                                                "系统提示",
-                                                                "数据已成功删除！");
-                                                        $("#dg").datagrid(
-                                                                "reload");
-                                                    } else {
-                                                        $.messager.alert(
-                                                                "系统提示",
-                                                                "数据删除失败！");
-                                                    }
-                                                }, "json");
+                                $.ajax({
+                                    type: "DELETE",//方法类型
+                                    dataType: "json",//预期服务器返回的数据类型
+                                    url: "/articles/" + ids,//url
+                                    data: {},
+                                    success: function (result) {
+                                        console.log(result);//打印服务端返回的数据
+                                        if (result.resultCode == 200) {
+                                            alert("SUCCESS");
+//                                            $.messager.alert(
+//                                                    "系统提示",
+//                                                    "数据已成功删除！");
+//                                            $("#dg").datagrid(
+//                                                    "reload");
+                                        }
+                                        else {
+                                            $.messager.alert(
+                                                    "系统提示",
+                                                    "数据删除失败！");
+                                        }
+
+                                        ;
+                                    },
+                                    error: function () {
+                                        alert("异常！");
+                                    }
+                                });
                             }
                         });
 
@@ -169,20 +178,29 @@
         var ue = UE.getEditor('myEditor');
         ue.setContent("");
         $("#dlg").dialog("open").dialog("setTitle", "添加文本信息");
-        url = "${pageContext.request.contextPath}/article/save.do";
+        url = "${pageContext.request.contextPath}/articles/";
+        method = "POST";
     }
 
     function saveArticle() {
-        $("#fm").form("submit", {
-            url: url,
-            onSubmit: function () {
-                return $(this).form("validate");
-            },
+        $.ajax({
+            type: method,//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: url,//url
+            data: $('#fm').serialize(),
             success: function (result) {
-                $.messager.alert("系统提示", "保存成功");
-                $("#dlg").dialog("close");
-                $("#dg").datagrid("reload");
-                resetValue();
+                console.log(result);//打印服务端返回的数据
+                if (result.resultCode == 200) {
+                    alert("SUCCESS");
+//                    $.messager.alert("系统提示", "保存成功");
+//                    $("#dlg").dialog("close");
+//                    $("#dg").datagrid("reload");
+//                    resetValue();
+                }
+                ;
+            },
+            error: function () {
+                alert("异常！");
             }
         });
     }
@@ -201,8 +219,9 @@
         ResetEditor(editor);
         var ue = UE.getEditor('myEditor');
         ue.setContent(row.articleContent);
-        url = "${pageContext.request.contextPath}/article/save.do?id="
+        url = "${pageContext.request.contextPath}/articles/?id="
                 + row.id;
+        method = "PUT";
     }
 
     function formatHref(val, row) {
