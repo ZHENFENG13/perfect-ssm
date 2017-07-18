@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>ssm-maven系统登录</title>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/common.js"></script>
     <style type=text/css>
         body {
             text-align: center;
@@ -75,9 +76,11 @@
                 url: "/users/cookie",
                 data: $('#adminlogin').serialize(),
                 success: function (result) {
-                    console.log(result);
                     if (result.resultCode == 200) {
                         alert("SUCCESS");
+                        setCookie("userName", result.data.currentUser.userName);
+                        setCookie("roleName", result.data.currentUser.roleName);
+                        window.location.href = "main.jsp";
                     }
                     ;
 

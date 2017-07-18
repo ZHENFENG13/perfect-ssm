@@ -14,7 +14,7 @@
             $.ajax({
                 type: "POST",//方法类型
                 dataType: "json",//服务端接收的数据类型
-                url: "/users/cookie" ,//url
+                url: "/users/cookie",//url
                 data: $('#form1').serialize(),
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据
@@ -23,11 +23,13 @@
                     }
                     ;
                 },
-                error : function() {
+                error: function () {
                     alert("异常！");
                 }
             });
         }
+
+
     </script>
 </head>
 <body>

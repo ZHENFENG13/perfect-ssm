@@ -15,7 +15,9 @@
             src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
+    <script src="/js/common.js"></script>
     <script type="text/javascript">
+        checkCookie();
         var url;
         function addTab(url, text, iconCls) {
             var content = "<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src='${pageContext.request.contextPath}/views/"
@@ -49,7 +51,6 @@
                             });
         }
     </script>
-    <jsp:include page="login_chk.jsp"></jsp:include>
 <body class="easyui-layout">
 <div region="north" style="height: 78px;background-color: #ffff">
     <table width="100%">
@@ -57,8 +58,7 @@
             <td width="50%"></td>
             <td valign="bottom"
                 style="font-size: 20px;color:#8B8B8B;font-family: '楷体';"
-                align="right" width="50%"><font size="3">&nbsp;&nbsp;<strong>当前管理员：</strong>${currentUser.userName
-                    }</font>【管理员】
+                align="right" width="50%"><font size="3">&nbsp;&nbsp;<strong>当前管理员：</strong>admin</font>【管理员】
             </td>
         </tr>
     </table>
