@@ -1,29 +1,28 @@
 package com.ssm.promotion.core.admin;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.ssm.promotion.core.util.MD5Util;
+import com.ssm.promotion.core.common.Result;
+import com.ssm.promotion.core.common.ResultGenerator;
 import com.ssm.promotion.core.entity.PageBean;
 import com.ssm.promotion.core.entity.User;
+import com.ssm.promotion.core.service.UserService;
+import com.ssm.promotion.core.util.MD5Util;
 import com.ssm.promotion.core.util.ResponseUtil;
 import com.ssm.promotion.core.util.StringUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
 import org.apache.log4j.Logger;
-import org.apache.log4j.MDC;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ssm.promotion.core.service.UserService;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 1034683568@qq.com
@@ -31,7 +30,7 @@ import com.ssm.promotion.core.service.UserService;
  * @date 2017-3-1
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     @Resource
@@ -42,11 +41,11 @@ public class UserController {
      * 登录
      *
      * @param user
-     * @param request
      * @return
      */
-    @RequestMapping("/login")
-    public String login(User user, HttpServletRequest request) {
+    @RequestMapping(value = "/cookie", method = RequestMethod.POST)
+    @ResponseBody
+    public Result login(User user) {
         try {
             String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");
             user.setPassword(MD5pwd);
@@ -56,14 +55,11 @@ public class UserController {
         User resultUser = userService.login(user);
         log.info("request: user/login , user: " + user.toString());
         if (resultUser == null) {
-            request.setAttribute("user", user);
-            request.setAttribute("errorMsg", "请认真核对账号、密码！");
-            return "login";
+            return ResultGenerator.genFailResult("请认真核对账号、密码！");
         } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("currentUser", resultUser);
-            MDC.put("userName", user.getUserName());
-            return "redirect:/main.jsp";
+            Map data = new HashMap();
+            data.put("currentUser", resultUser);
+            return ResultGenerator.genSuccessResult(data);
         }
     }
 
