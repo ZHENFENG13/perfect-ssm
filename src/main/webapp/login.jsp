@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>ssm-maven系统登录</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <style type=text/css>
         body {
             text-align: center;
@@ -69,14 +69,30 @@
                 alert("密码不能为空！");
                 return;
             }
-            $("#adminlogin").submit();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/users/cookie",
+                data: $('#adminlogin').serialize(),
+                success: function (result) {
+                    console.log(result);
+                    if (result.resultCode == 200) {
+                        alert("SUCCESS");
+                    }
+                    ;
+
+                },
+                error: function () {
+                    alert("异常！");
+                }
+            });
 
         }
     </script>
 </head>
 <body>
-<form id=adminlogin method=post
-      name=adminlogin action="${pageContext.request.contextPath}/user/login.do">
+<form id="adminlogin" method="post"
+      name="adminlogin" onsubmit="return false" action="##">
     <div></div>
     <table style="margin: auto; width: 100%; height: 100%" border=0
            cellSpacing=0 cellPadding=0>
@@ -117,7 +133,7 @@
                                         <td width=100 align=right><input
                                                 style="border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px"
                                                 id=btnLogin src="${pageContext.request.contextPath}/images/btn1.jpg"
-                                                type=image name=btnLogin onclick="javascript:login();return false;">
+                                                type=image name=btnLogin onclick="javascript:login();">
                                         </td>
                                         <td width=100 align=middle><input
                                                 style="border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px"
