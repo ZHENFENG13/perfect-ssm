@@ -9,7 +9,7 @@
 
 </div>
 </body>
-<script type="text/javascript" src="jquery-easyui-1.3.3/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
     function getQueryStringByName(name) {
         var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
@@ -20,15 +20,20 @@
     }
 
     window.onload = function () {
+        var id = getQueryStringByName("id");
+        if (id == null) {
+            alert("无数据!");
+            return;
+        }
         $.ajax({
-            type: "post",
+            type: "GET",
             dataType: "json",
-            url: '/article/findById.do',
-            data: {"id": getQueryStringByName("id")},
+            url: '/articles/' + id,
+            data: {},
             success: function (data) {
                 if (data != null) {
-                    $('.article').html(data.articleContent);
-                    console.log(data.articleContent);
+                    $('.article').html(data.data.articleContent);
+                    //console.log(data.articleContent);
                 }
                 else {
                     alert("无数据!");

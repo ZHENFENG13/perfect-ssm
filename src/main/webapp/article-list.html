@@ -10,18 +10,18 @@
 </ul>
 
 </body>
-<script type="text/javascript" src="jquery-easyui-1.3.3/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
     window.onload = function () {
         $.ajax({
-            type: "POST",
-            url: "/article/list.do",
+            type: "GET",
+            url: "/articles/",
             contentType: "application/json; charset=utf-8",
             data: "{}",
             dataType: "json",
             success: function (result) {
                 //console.log(result.rows);
-                DisplayListItems(result.rows);
+                DisplayListItems(result.data.rows);
             },
             "error": function (result) {
                 var response = result.responseText;
