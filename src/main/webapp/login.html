@@ -13,7 +13,7 @@
         function login() {
             $.ajax({
                 type: "POST",//方法类型
-                dataType: "json",//服务端接收的数据类型
+                dataType: "json",//预期服务器返回的数据类型
                 url: "/users/cookie",//url
                 data: $('#form1').serialize(),
                 success: function (result) {
