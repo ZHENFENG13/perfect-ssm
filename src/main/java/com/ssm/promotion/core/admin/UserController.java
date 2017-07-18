@@ -57,6 +57,7 @@ public class UserController {
         if (resultUser == null) {
             return ResultGenerator.genFailResult("请认真核对账号、密码！");
         } else {
+            resultUser.setPassword("PASSWORD");
             Map data = new HashMap();
             data.put("currentUser", resultUser);
             return ResultGenerator.genSuccessResult(data);
