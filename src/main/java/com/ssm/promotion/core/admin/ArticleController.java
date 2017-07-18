@@ -6,12 +6,16 @@ import com.ssm.promotion.core.entity.Article;
 import com.ssm.promotion.core.entity.PageBean;
 import com.ssm.promotion.core.service.ArticleService;
 import com.ssm.promotion.core.util.DateUtil;
+import com.ssm.promotion.core.util.ResponseUtil;
 import com.ssm.promotion.core.util.StringUtil;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +28,43 @@ public class ArticleController {
     private ArticleService articleService;
     private static final long serialVersionUID = 1L;
     private static final Logger log = Logger.getLogger(ArticleController.class);// 日志文件
+
+    /**
+     * 查找相应的数据集合
+     *
+     * @param page
+     * @param rows
+     * @param article
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/datagrid", method = RequestMethod.POST)
+    public String list(
+            @RequestParam(value = "page", required = false) String page,
+            @RequestParam(value = "rows", required = false) String rows,
+            Article article, HttpServletResponse response) throws Exception {
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (page != null && rows != null) {
+            PageBean pageBean = new PageBean(Integer.parseInt(page),
+                    Integer.parseInt(rows));
+            map.put("start", pageBean.getStart());
+            map.put("size", pageBean.getPageSize());
+        }
+        if (article != null) {
+            map.put("articleTitle",
+                    StringUtil.formatLike(article.getArticleTitle()));
+        }
+        List<Article> articleList = articleService.findArticle(map);
+        Long total = articleService.getTotalArticle(map);
+        JSONObject result = new JSONObject();
+        JSONArray jsonArray = JSONArray.fromObject(articleList);
+        result.put("rows", jsonArray);
+        result.put("total", total);
+        ResponseUtil.write(response, result);
+        log.info("request: article/list , map: " + map.toString());
+        return null;
+    }
 
     /**
      * 查找相应的数据集合
