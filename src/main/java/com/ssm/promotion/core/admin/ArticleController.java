@@ -163,6 +163,9 @@ public class ArticleController {
     @RequestMapping(value = "/{ids}", method = RequestMethod.DELETE)
     @ResponseBody
     public Result delete(@PathVariable("ids") String ids) throws Exception {
+        if (ids.length() > 20) {
+            return ResultGenerator.genFailResult("ERROR");
+        }
         String[] idsStr = ids.split(",");
         for (int i = 0; i < idsStr.length; i++) {
             articleService.deleteArticle(idsStr[i]);
