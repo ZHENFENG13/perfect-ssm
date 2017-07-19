@@ -11,10 +11,12 @@ import com.ssm.promotion.core.util.StringUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -61,8 +63,8 @@ public class ArticleController {
         JSONArray jsonArray = JSONArray.fromObject(articleList);
         result.put("rows", jsonArray);
         result.put("total", total);
-        ResponseUtil.write(response, result);
         log.info("request: article/list , map: " + map.toString());
+        ResponseUtil.write(response, result);
         return null;
     }
 
@@ -112,7 +114,7 @@ public class ArticleController {
      */
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseBody
-    public Result save(Article article)
+    public Result save(@RequestBody Article article)
             throws Exception {
         int resultTotal = 0;
 
@@ -138,7 +140,7 @@ public class ArticleController {
      */
     @RequestMapping(value = "/", method = RequestMethod.PUT)
     @ResponseBody
-    public Result update(Article article)
+    public Result update(@RequestBody Article article)
             throws Exception {
         int resultTotal = 0;
 

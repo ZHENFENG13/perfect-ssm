@@ -25,7 +25,6 @@
     </script>
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/js/common.js"></script>
-
 </head>
 <body style="margin:1px;" id="ff">
 <table id="dg" title="文本信息管理" class="easyui-datagrid" pagination="true"
@@ -72,13 +71,12 @@
                 <td><input type="text" id="title" name="articleTitle"
                            class="easyui-validatebox" required="true"/>&nbsp;<font
                         color="red">*</font>
+                    <input id="articleIdfm" name="id" type="hidden" value="0">
                 </td>
             </tr>
             <tr>
                 <td>添加人：</td>
                 <td><input type="text" id="addName" name="addName"/>
-                    <input type="text" id="articleCreateDate" name="articleCreateDate" type="hidden"
-                           style="display:none;"/>
                 </td>
             </tr>
             <tr>
@@ -98,7 +96,7 @@
 
 
 <script type="text/javascript">
-    var url;
+    var url = "${pageContext.request.contextPath}/articles/";
     var method;
     function ResetEditor() {
         UE.getEditor('myEditor', {
@@ -147,12 +145,11 @@
                                     success: function (result) {
                                         console.log(result);//打印服务端返回的数据
                                         if (result.resultCode == 200) {
-                                            alert("SUCCESS");
-//                                            $.messager.alert(
-//                                                    "系统提示",
-//                                                    "数据已成功删除！");
-//                                            $("#dg").datagrid(
-//                                                    "reload");
+                                            $.messager.alert(
+                                                    "系统提示",
+                                                    "数据已成功删除！");
+                                            $("#dg").datagrid(
+                                                    "reload");
                                         }
                                         else {
                                             $.messager.alert(
@@ -183,24 +180,34 @@
     }
 
     function saveArticle() {
+        var title = $("#title").val();
+        var addName = $("#addName").val();
+        var content = UE.getEditor('myEditor').getContent();
+        var id = $("#articleIdfm").val();
+        var data = {"id": id, "articleTitle": title, "articleContent": content, "addName": addName}
         $.ajax({
             type: method,//方法类型
             dataType: "json",//预期服务器返回的数据类型
             url: url,//url
-            data: $('#fm').serialize(),
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
             success: function (result) {
                 console.log(result);//打印服务端返回的数据
                 if (result.resultCode == 200) {
-                    alert("SUCCESS");
-//                    $.messager.alert("系统提示", "保存成功");
-//                    $("#dlg").dialog("close");
-//                    $("#dg").datagrid("reload");
-//                    resetValue();
+                    $.messager.alert("系统提示", "保存成功");
+                    $("#dlg").dialog("close");
+                    $("#dg").datagrid("reload");
+                    resetValue();
+                }
+                else {
+                    $.messager.alert("系统提示", "操作失败");
+                    $("#dlg").dialog("close");
+                    resetValue();
                 }
                 ;
             },
             error: function () {
-                alert("异常！");
+                $.messager.alert("系统提示", "操作失败");
             }
         });
     }
@@ -219,9 +226,8 @@
         ResetEditor(editor);
         var ue = UE.getEditor('myEditor');
         ue.setContent(row.articleContent);
-        url = "${pageContext.request.contextPath}/articles/?id="
-                + row.id;
         method = "PUT";
+        $("#articleIdfm").val(row.id);
     }
 
     function formatHref(val, row) {
