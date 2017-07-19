@@ -72,10 +72,11 @@
                 <div class="i_do_div rel" id="picture"><p class="i_do_tle r_txt abs font14">展示图片</p>
                 </div>
                 <div class="i_do_div rel" id="i_no_sku_stock_wrap"><p class="i_do_tle r_txt abs font14">图片链接</p>
-                    <input type="text" id="desc" name="url" value="" required="true" class="easyui-validatebox"
+                    <input type="text" id="pictureUrl" name="url" value="" required="true" class="easyui-validatebox"
                            style="border:1px #9c9c9c solid;height:25px;"/>
-                    <input type="hidden" name="type" value="<%=type%>"/>
-                    <input type="hidden" name="grade" value="<%=grade%>"/>
+                    <input type="hidden" id="pictureType" name="type" value="<%=type%>"/>
+                    <input type="hidden" id="pictureGrade" name="grade" value="<%=grade%>"/>
+                    <input id="pictureId" name="id" type="hidden" value="0">
                     <input type="hidden" name="time" id="time"/>
                 </div>
             </div>
@@ -92,7 +93,8 @@
 
 </body>
 <script type="text/javascript">
-    var url;
+    var url = "${pageContext.request.contextPath}/pictures/";
+    var method;
 
     function searchPicture() {
         $("#dg").datagrid('load', {
@@ -136,27 +138,41 @@
         var imghtml = '<img src="images/back.jpg" width="110" height="110" id="img11"  style="display:none;"/><input type="text" id="input11" name="path" value="" style="display:none;" />';
         $('#pic11').append(imghtml);
         initUploadify();
-        url = "${pageContext.request.contextPath}/picture/save.do";
+        method = "POST";
     }
 
 
     function savePicture() {
-        $("#fm").form("submit", {
-            url: url,
-            onSubmit: function () {
-                return $(this).form("validate");
-            },
+        var path = $("#input11").val();
+        var type = $("#pictureType").val();
+        var grade = $("#pictureGrade").val();
+        var id = $("#pictureId").val();
+        var pictureUrl = $("#pictureUrl").val();
+        console.log(path);
+        var data = {"id": id, "grade": grade, "type": type, "url": pictureUrl, "path": path}
+        $.ajax({
+            type: method,//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: url,//url
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
             success: function (result) {
-                if (result.success) {
+                console.log(result);//打印服务端返回的数据
+                if (result.resultCode == 200) {
                     $.messager.alert("系统提示", "保存成功");
                     $("#dlg").dialog("close");
                     $("#dg").datagrid("reload");
                     resetValue();
-                } else {
-                    $.messager.alert("系统提示", "保存失败");
-                    window.location.reload();
-                    return;
                 }
+                else {
+                    $.messager.alert("系统提示", "操作失败");
+                    $("#dlg").dialog("close");
+                    resetValue();
+                }
+                ;
+            },
+            error: function () {
+                $.messager.alert("系统提示", "操作失败");
             }
         });
     }
@@ -175,8 +191,8 @@
         initUploadify();
         $("#dlg").dialog("open").dialog("setTitle", "修改信息");
         $('#fm').form('load', row);
-        url = "${pageContext.request.contextPath}/picture/save.do?id="
-                + row.id;
+        $("#pictureId").val(row.id);
+        method = "PUT";
     }
 
     function formatProPic(val, row) {
@@ -184,7 +200,7 @@
     }
 
     function resetValue() {
-        $("#desc").val("");
+        $("#pictureUrl").val("");
         $("#path").val("");
         $('#picture').find('img').remove();
         $('#pic11').find('input').remove();
