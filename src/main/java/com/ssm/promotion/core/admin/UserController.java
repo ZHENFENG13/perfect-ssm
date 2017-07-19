@@ -90,19 +90,6 @@ public class UserController {
     }
 
     /**
-     * 退出系统
-     *
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping("/logout")
-    public String logout(HttpSession session) throws Exception {
-        session.invalidate();
-        log.info("request: user/logout");
-        return "redirect:/login.jsp";
-    }
-
-    /**
      * @param page
      * @param rows
      * @param s_user
