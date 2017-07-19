@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +29,6 @@ public class PictureController {
      * @param page
      * @param rows
      * @param picture
-     * @param response
      * @return
      * @throws Exception
      */
@@ -38,7 +36,7 @@ public class PictureController {
     public Result list(
             @RequestParam(value = "page", required = false) String page,
             @RequestParam(value = "rows", required = false) String rows,
-            Picture picture, HttpServletResponse response) throws Exception {
+            Picture picture) throws Exception {
         Map<String, Object> map = new HashMap<String, Object>();
         if (page != null && rows != null) {
             PageBean pageBean = new PageBean(Integer.parseInt(page),
