@@ -12,10 +12,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +23,7 @@ import java.util.Map;
 
 /**
  * @author 1034683568@qq.com
- * @project_name ssm-maven
+ * @project_name ssm-promotion
  * @date 2017-3-1
  */
 @Controller
@@ -66,30 +63,6 @@ public class UserController {
 
 
     /**
-     * 修改密码
-     *
-     * @param user
-     * @param response
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping("/modifyPassword")
-    public String modifyPassword(User user, HttpServletResponse response) throws Exception {
-        String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");
-        user.setPassword(MD5pwd);
-        int resultTotal = userService.updateUser(user);
-        JSONObject result = new JSONObject();
-        if (resultTotal > 0) {
-            result.put("success", true);
-        } else {
-            result.put("success", false);
-        }
-        log.info("request: user/modifyPassword , user: " + user.toString());
-        ResponseUtil.write(response, result);
-        return null;
-    }
-
-    /**
      * @param page
      * @param rows
      * @param s_user
@@ -97,7 +70,7 @@ public class UserController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/list")
+    @RequestMapping(value = "/datagrid", method = RequestMethod.POST)
     public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, User s_user, HttpServletResponse response) throws Exception {
         PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
         Map<String, Object> map = new HashMap<String, Object>();
@@ -118,49 +91,62 @@ public class UserController {
     /**
      * 添加或修改管理员
      *
-     * @param response
      * @return
      * @throws Exception
      */
-    @RequestMapping("/save")
-    public String save(User user, HttpServletResponse response) throws Exception {
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @ResponseBody
+    public Result save(@RequestBody User user) throws Exception {
         int resultTotal = 0;
         String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");
         user.setPassword(MD5pwd);
-        if (user.getId() == null) {
-            resultTotal = userService.addUser(user);
-        } else {
-            resultTotal = userService.updateUser(user);
-        }
-        JSONObject result = new JSONObject();
+        resultTotal = userService.addUser(user);
         if (resultTotal > 0) {
-            result.put("success", true);
+            return ResultGenerator.genSuccessResult();
         } else {
-            result.put("success", false);
+            return ResultGenerator.genFailResult("FAIL");
         }
-        log.info("request: user/save , user: " + user.toString());
-        ResponseUtil.write(response, result);
-        return null;
+    }
+
+    /**
+     * 修改
+     *
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @ResponseBody
+    public Result update(@RequestBody User user) throws Exception {
+        String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");
+        user.setPassword(MD5pwd);
+        int resultTotal = userService.updateUser(user);
+        log.info("request: user/update , user: " + user.toString());
+        if (resultTotal > 0) {
+            return ResultGenerator.genSuccessResult();
+        } else {
+            return ResultGenerator.genFailResult("FAIL");
+        }
     }
 
     /**
      * 删除管理员
      *
      * @param ids
-     * @param response
      * @return
      * @throws Exception
      */
-    @RequestMapping("/delete")
-    public String delete(@RequestParam(value = "ids") String ids, HttpServletResponse response) throws Exception {
-        JSONObject result = new JSONObject();
+    @RequestMapping(value = "/{ids}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Result delete(@PathVariable(value = "ids") String ids) throws Exception {
+        if (ids.length() > 20) {
+            return ResultGenerator.genFailResult("ERROR");
+        }
         String[] idsStr = ids.split(",");
         for (int i = 0; i < idsStr.length; i++) {
-            userService.deleteUser(Integer.parseInt(idsStr[i]));
+            userService.deleteUser(Integer.valueOf(idsStr[i]));
         }
-        result.put("success", true);
-        log.info("request: user/delete , ids: " + ids);
-        ResponseUtil.write(response, result);
-        return null;
+        log.info("request: article/delete , ids: " + ids);
+        return ResultGenerator.genSuccessResult();
     }
 }
