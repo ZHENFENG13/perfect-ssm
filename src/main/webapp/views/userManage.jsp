@@ -16,7 +16,8 @@
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript">
-        var url;
+        var url = "${pageContext.request.contextPath}/users/";
+        var method;
 
         function searchUser() {
             $("#dg").datagrid('load', {
@@ -38,16 +39,32 @@
             $.messager.confirm("系统提示", "您确认要删除这<font color=red>"
                     + selectedRows.length + "</font>条数据吗？", function (r) {
                 if (r) {
-                    $.post("${pageContext.request.contextPath}/user/delete.do", {
-                        ids: ids
-                    }, function (result) {
-                        if (result.success) {
-                            $.messager.alert("系统提示", "数据已成功删除！");
-                            $("#dg").datagrid("reload");
-                        } else {
-                            $.messager.alert("系统提示", "数据删除失败！");
+                    $.ajax({
+                        type: "DELETE",//方法类型
+                        dataType: "json",//预期服务器返回的数据类型
+                        url: "/users/" + ids,//url
+                        data: {},
+                        success: function (result) {
+                            console.log(result);//打印服务端返回的数据
+                            if (result.resultCode == 200) {
+                                $.messager.alert(
+                                        "系统提示",
+                                        "数据已成功删除！");
+                                $("#dg").datagrid(
+                                        "reload");
+                            }
+                            else {
+                                $.messager.alert(
+                                        "系统提示",
+                                        "数据删除失败！");
+                            }
+
+                            ;
+                        },
+                        error: function () {
+                            $.messager.alert("ERROR！");
                         }
-                    }, "json");
+                    });
                 }
             });
 
@@ -55,20 +72,37 @@
 
         function openUserAddDialog() {
             $("#dlg").dialog("open").dialog("setTitle", "添加用户信息");
-            url = "${pageContext.request.contextPath}/user/save.do";
+            method = "POST";
         }
 
         function saveUser() {
-            $("#fm").form("submit", {
-                url: url,
-                onSubmit: function () {
-                    return $(this).form("validate");
-                },
+            var userName = $("#userName").val();
+            var password = $("#password").val();
+            var id = $("#userId").val();
+            var data = {"id": id, "password": password, "userName": userName}
+            $.ajax({
+                type: method,//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: url,//url
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data),
                 success: function (result) {
-                    $.messager.alert("系统提示", "保存成功");
-                    resetValue();
-                    $("#dlg").dialog("close");
-                    $("#dg").datagrid("reload");
+                    console.log(result);//打印服务端返回的数据
+                    if (result.resultCode == 200) {
+                        $.messager.alert("系统提示", "保存成功");
+                        $("#dlg").dialog("close");
+                        $("#dg").datagrid("reload");
+                        resetValue();
+                    }
+                    else {
+                        $.messager.alert("系统提示", "操作失败");
+                        $("#dlg").dialog("close");
+                        resetValue();
+                    }
+                    ;
+                },
+                error: function () {
+                    $.messager.alert("系统提示", "操作失败");
                 }
             });
         }
@@ -83,7 +117,8 @@
             $("#dlg").dialog("open").dialog("setTitle", "编辑用户信息");
             $('#fm').form('load', row);
             $("#password").val("******");
-            url = "${pageContext.request.contextPath}/user/save.do?id=" + row.id;
+            $("#userId").val(row.id);
+            method = "PUT";
         }
 
         function resetValue() {
@@ -100,7 +135,7 @@
 <body style="margin:1px;">
 <table id="dg" title="用户管理" class="easyui-datagrid" fitColumns="true"
        pagination="true" rownumbers="true"
-       url="${pageContext.request.contextPath}/user/list.do" fit="true"
+       url="${pageContext.request.contextPath}/users/datagrid" fit="true"
        toolbar="#tb">
     <thead>
     <tr>
@@ -137,6 +172,7 @@
                 <td><input type="text" id="userName" name="userName"
                            class="easyui-validatebox" required="true"/>&nbsp;<font
                         color="red">*</font>
+                    <input type="hidden" id="userId" value="0">
                 </td>
             </tr>
             <tr>
