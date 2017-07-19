@@ -77,7 +77,6 @@
                 data: $('#adminlogin').serialize(),
                 success: function (result) {
                     if (result.resultCode == 200) {
-                        alert("SUCCESS");
                         setCookie("userName", result.data.currentUser.userName);
                         setCookie("roleName", result.data.currentUser.roleName);
                         window.location.href = "main.jsp";
