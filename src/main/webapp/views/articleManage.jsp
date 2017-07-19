@@ -160,7 +160,7 @@
                                         ;
                                     },
                                     error: function () {
-                                        alert("异常！");
+                                        $.messager.alert("ERROR！");
                                     }
                                 });
                             }
