@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>ssm-maven系统登录</title>
+    <title>ssm-promotion系统登录</title>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="/js/common.js"></script>
     <style type=text/css>

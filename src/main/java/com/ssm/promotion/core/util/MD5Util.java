@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 /**
  * @author 1034683568@qq.com
- * @project_name ssm-maven
+ * @project_name ssm-promotion
  * @date 2017-3-1
  */
 public class MD5Util {
