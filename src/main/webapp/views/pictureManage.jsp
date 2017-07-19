@@ -116,17 +116,32 @@
         $.messager.confirm("系统提示", "您确认要删除这<font color=red>"
                 + selectedRows.length + "</font>条数据吗？", function (r) {
             if (r) {
-                $.post("${pageContext.request.contextPath}/picture/delete.do",
-                        {
-                            ids: ids
-                        }, function (result) {
-                            if (result.success) {
-                                $.messager.alert("系统提示", "数据已成功删除！");
-                                $("#dg").datagrid("reload");
-                            } else {
-                                $.messager.alert("系统提示", "数据删除失败！");
-                            }
-                        }, "json");
+                $.ajax({
+                    type: "DELETE",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/pictures/" + ids,//url
+                    data: {},
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据
+                        if (result.resultCode == 200) {
+                            $.messager.alert(
+                                    "系统提示",
+                                    "数据已成功删除！");
+                            $("#dg").datagrid(
+                                    "reload");
+                        }
+                        else {
+                            $.messager.alert(
+                                    "系统提示",
+                                    "数据删除失败！");
+                        }
+
+                        ;
+                    },
+                    error: function () {
+                        $.messager.alert("ERROR！");
+                    }
+                });
             }
         });
 
