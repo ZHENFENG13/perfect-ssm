@@ -141,7 +141,7 @@ public class PictureController {
     public Result update(@RequestBody Picture picture)
             throws Exception {
         int resultTotal = 0;
-        
+
         picture.setTime(DateUtil.getCurrentDateStr());
 
         resultTotal = pictureService.updatePicture(picture);
@@ -164,6 +164,7 @@ public class PictureController {
      * @throws Exception
      */
     @RequestMapping(value = "/{ids}", method = RequestMethod.DELETE)
+    @ResponseBody
     public Result delete(@PathVariable(value = "ids") String ids
     ) throws Exception {
         if (ids.length() > 20) {
@@ -185,6 +186,7 @@ public class PictureController {
      * @throws Exception
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
     public Result findById(@PathVariable("id") String id) throws Exception {
         Picture picture = pictureService.findById(id);
         log.info("request: picture/findById");
