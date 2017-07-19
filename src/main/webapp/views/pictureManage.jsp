@@ -32,7 +32,7 @@
 <body style="margin:1px;" id="ff">
 <table id="dg" title="图片信息管理" class="easyui-datagrid" pagination="true"
        rownumbers="true" fit="true" data-options="pageSize:10"
-       url="${pageContext.request.contextPath}/picture/list.do?type=<%=type %>&grade=<%=grade %>"
+       url="${pageContext.request.contextPath}/pictures/datagrid?type=<%=type %>&grade=<%=grade %>"
        toolbar="#tb">
     <thead data-options="frozen:true">
     <tr>
@@ -72,7 +72,8 @@
                 <div class="i_do_div rel" id="picture"><p class="i_do_tle r_txt abs font14">展示图片</p>
                 </div>
                 <div class="i_do_div rel" id="i_no_sku_stock_wrap"><p class="i_do_tle r_txt abs font14">图片链接</p>
-                    <input type="text" id="desc" name="url" value="" required="true" class="easyui-validatebox" style="border:1px #9c9c9c solid;height:25px;"/>
+                    <input type="text" id="desc" name="url" value="" required="true" class="easyui-validatebox"
+                           style="border:1px #9c9c9c solid;height:25px;"/>
                     <input type="hidden" name="type" value="<%=type%>"/>
                     <input type="hidden" name="grade" value="<%=grade%>"/>
                     <input type="hidden" name="time" id="time"/>
@@ -198,7 +199,7 @@
     function initUploadify() {
         $("#uploadify2").uploadify({
             'uploader': 'swf/uploadify2.swf', 			//flash文件的相对路径
-            'script': '../loadimg/upload.do',  				//后台处理程序的路径
+            'script': '../images/',  				//后台处理程序的路径
             'fileDataName': 'file', 						//设置上传文件名称,默认为Filedata
             'cancelImg': 'images/cancel.png', 			//每一个文件上的关闭按钮图标
             'queueID': 'div_progress', 					//文件队列的ID，该ID与存放文件队列的div的ID一致
@@ -213,8 +214,9 @@
             'displayData': 'percentage',     			//上传队列显示的数据类型，percentage是百分比，speed是上传速度
             //回调函数
             'onComplete': function (evt, queueID, fileObj, response, data) {
-                $("#img11").attr("src", "../" + response);
-                $("#input11").val(response);
+                var imgUrl = JSON.parse(response).data;
+                $("#img11").attr("src", "../" + imgUrl);
+                $("#input11").val(imgUrl);
                 $("#pic11").removeAttr("style");
                 $("#img11").removeAttr("style");
                 return false;
