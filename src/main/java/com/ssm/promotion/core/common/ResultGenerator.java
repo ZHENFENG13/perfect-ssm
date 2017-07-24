@@ -25,6 +25,9 @@ public class ResultGenerator {
     public static Result genFailResult(String message) {
         Result result = new Result();
         result.setResultCode(Constants.RESULT_CODE_SERVER_ERROR);
+        if (message == null || message.length() < 1) {
+            message = DEFAULT_FAIL_MESSAGE;
+        }
         result.setMessage(message);
         return result;
     }
