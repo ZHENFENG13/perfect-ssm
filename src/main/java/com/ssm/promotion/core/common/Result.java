@@ -52,7 +52,4 @@ public class Result<T> implements Serializable {
                 '}';
     }
 
-    public Result failure(String required_parameter_is_not_present) {
-        return new Result(500, "服务错误");
-    }
 }
