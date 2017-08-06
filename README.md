@@ -3,11 +3,11 @@
 #### 项目简介
 
 **ssm系列**<br />
-├── [ssm-demo](https://github.com/ZHENFENG13/ssm-demo):Spring+SpringMVC+Mybatis+easyUI整合<br />
-├── **perfect-ssm：RESTful API+redis缓存**<br />
-├── [ssm-cluster](https://github.com/ZHENFENG13/ssm-cluster):前后端分离+集群部署<br />
-├── [ssm-dubbo](https://github.com/ZHENFENG13/ssm-dubbo)：dubbo服务化<br />
-└── [ssm-micro-service](https://github.com/ZHENFENG13/ssm-micro-service)：springcloud技术栈实现微服务化<br />
+* [x] [ssm-demo](https://github.com/ZHENFENG13/ssm-demo):Spring+SpringMVC+Mybatis+easyUI整合
+* [x] **perfect-ssm：RESTful API+redis缓存**
+* [ ] [ssm-cluster](https://github.com/ZHENFENG13/ssm-cluster):前后端分离+集群部署
+* [ ] [ssm-dubbo](https://github.com/ZHENFENG13/ssm-dubbo)：dubbo服务化
+* [ ] [ssm-micro-service](https://github.com/ZHENFENG13/ssm-micro-service)：springcloud技术栈实现微服务化
 
 本项目为ssm系列的第二篇，更完善的Spring+SpringMVC+Mybatis+easyUI后台管理系统,相较于原ssm-demo仓库,perfect-ssm仓库重新调整了目录结构,只保留了maven这一可以继续优化的目录并且对其中的代码做了删改,同时也增加了RESTful API和缓存模块.Wiki文档已经整理,可以到[Wiki Page](https://github.com/ZHENFENG13/perfect-ssm/wiki)查看,关于项目的简介及技术选型,也已经单独整理了一篇的文章--[项目简述及技术选型介绍.](http://www.cnblogs.com/han-1034683568/p/6440090.html)<br />
 
