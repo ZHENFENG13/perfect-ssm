@@ -1,6 +1,6 @@
 ## Quick Start 
 
-更完善的Spring+SpringMVC+Mybatis+easyUI后台管理系统，相较于原ssm-demo仓库，perfect-ssm仓库重新调整了目录结构，只保留了maven这一可以继续优化的目录并且对其中的代码做了删改，同时也增加了RESTful API和缓存模块。Wiki文档已经整理，可以到[Wiki Page](https://github.com/ZHENFENG13/perfect-ssm/wiki)查看，关于项目的简介及技术选型，也已经单独整理了一篇的文章--[项目简述及技术选型介绍](http://www.cnblogs.com/han-1034683568/p/6440090.html)。<br />
+更完善的Spring+SpringMVC+Mybatis+easyUI后台管理系统,相较于原ssm-demo仓库,perfect-ssm仓库重新调整了目录结构,只保留了maven这一可以继续优化的目录并且对其中的代码做了删改,同时也增加了RESTful API和缓存模块.Wiki文档已经整理,可以到[Wiki Page](https://github.com/ZHENFENG13/perfect-ssm/wiki)查看,关于项目的简介及技术选型,也已经单独整理了一篇的文章--[项目简述及技术选型介绍.](http://www.cnblogs.com/han-1034683568/p/6440090.html)<br />
 
 #### 项目地址
   <a href='http://ssm-maven.hanshuai.xin'>ssm-maven</a> <br /> 
@@ -42,8 +42,9 @@
 - 后端界面则使用easyui进行搭建 <br /> 
 
 ## Logs
-  2017-07-07 init perfect-ssm <br /> 
-  2017-07-17 Article Module & Picture Module <br /> 
-  2017-07-18 User Module <br /> 
+  2017-07-07 perfect-ssm项目初始化。 <br /> 
+  2017-07-17 文章模块和图片模块接口RESTful改造。 <br /> 
+  2017-07-18 管理员模块接口RESTful改造。 <br /> 
+  2017-07-20 代码整理。 <br /> 
   2017-08-06 架构及目录结构整理，Wiki文档编辑。<br/>
 
