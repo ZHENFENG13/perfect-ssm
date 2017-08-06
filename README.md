@@ -1,6 +1,6 @@
 ## Quick Start 
 
-#### 项目简介
+##### 项目简介
 
 **ssm系列**<br />
 * [x] [ssm-demo](https://github.com/ZHENFENG13/ssm-demo):Spring+SpringMVC+Mybatis+easyUI整合
@@ -9,9 +9,9 @@
 * [ ] [ssm-dubbo](https://github.com/ZHENFENG13/ssm-dubbo)：dubbo服务化
 * [ ] [ssm-micro-service](https://github.com/ZHENFENG13/ssm-micro-service)：springcloud技术栈实现微服务化
 
-本项目为ssm系列的第二篇，更完善的Spring+SpringMVC+Mybatis+easyUI后台管理系统,相较于原ssm-demo仓库,perfect-ssm仓库重新调整了目录结构,只保留了maven这一可以继续优化的目录并且对其中的代码做了删改,同时也增加了RESTful API和缓存模块.Wiki文档已经整理,可以到[Wiki Page](https://github.com/ZHENFENG13/perfect-ssm/wiki)查看,关于项目的简介及技术选型,也已经单独整理了一篇的文章--[项目简述及技术选型介绍.](http://www.cnblogs.com/han-1034683568/p/6440090.html)<br />
+本项目为ssm系列的第二篇，**更完善的Spring+SpringMVC+Mybatis+easyUI后台管理系统**,相较于原[ssm-demo](https://github.com/ZHENFENG13/ssm-demo)仓库,perfect-ssm仓库重新调整了目录结构,只保留了ssm-maven这个可以继续优化的目录并且对其中的代码做了删改,同时也增加了RESTful API和缓存模块。Wiki文档已经整理,可以到[Wiki Page](https://github.com/ZHENFENG13/perfect-ssm/wiki)查看,关于项目的简介及技术选型,也已经单独整理了一篇的文章--[项目简述及技术选型介绍.](http://www.cnblogs.com/han-1034683568/p/6440090.html)<br />
 
-#### 项目地址
+##### 项目地址
   <a href='http://ssm-maven.hanshuai.xin'>ssm-maven</a> <br /> 
   登录名：admin <br /> 
   密码：123456 <br />   
@@ -19,7 +19,7 @@
 ![Version 2.0.0](https://img.shields.io/badge/version-2.0.0-yellow.svg)
 [![License](https://img.shields.io/badge/license-apache-blue.svg)](https://github.com/ZHENFENG13/perfect-ssm/blob/master/LICENSE)
 
-#### 架构图
+##### 架构图
  
  ###### 架构简图
  ![架构简图](https://raw.githubusercontent.com/ZHENFENG13/resource/master/images/2017-08-06/ssm%E6%9E%B6%E6%9E%84%E5%9B%BE-%E7%AE%80%E7%89%88.png)
