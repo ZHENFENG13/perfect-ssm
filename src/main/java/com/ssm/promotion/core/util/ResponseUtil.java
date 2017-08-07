@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author 1034683568@qq.com
- * @project_name ssm-promotion
+ * @project_name perfect-ssm
  * @date 2017-3-1
  */
 public class ResponseUtil {

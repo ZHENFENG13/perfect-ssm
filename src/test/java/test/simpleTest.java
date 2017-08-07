@@ -13,7 +13,7 @@ public class simpleTest {
      */
     @Test
     public void md5Test() {
-        System.out.println(MD5Util.MD5Encode("ssm-promotion-secret", "UTF-8"));
+        System.out.println(MD5Util.MD5Encode("perfect-ssm-secret", "UTF-8"));
         //dce781f1a0189c9cf24e8b3a831fe078
     }
 
