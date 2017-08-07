@@ -96,7 +96,7 @@
 
 
 <script type="text/javascript">
-    var url = "${pageContext.request.contextPath}/articles/";
+    var url = "${pageContext.request.contextPath}/articles";
     var method;
     function ResetEditor() {
         UE.getEditor('myEditor', {
@@ -175,7 +175,6 @@
         var ue = UE.getEditor('myEditor');
         ue.setContent("");
         $("#dlg").dialog("open").dialog("setTitle", "添加文本信息");
-        url = "${pageContext.request.contextPath}/articles/";
         method = "POST";
     }
 

@@ -75,7 +75,7 @@ public class ArticleController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseBody
     public Result list(
             @RequestParam(value = "page", required = false) String page,
@@ -110,7 +110,7 @@ public class ArticleController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
     public Result save(@RequestBody Article article)
             throws Exception {
@@ -136,7 +136,7 @@ public class ArticleController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     @ResponseBody
     public Result update(@RequestBody Article article)
             throws Exception {
