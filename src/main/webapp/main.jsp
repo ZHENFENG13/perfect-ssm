@@ -68,11 +68,11 @@
 <div region="center">
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
         <div title="首页" data-options="iconCls:'icon-home'">
-            <div align="center" style="padding-top: 20px;"><a href="https://github.com/ZHENFENG13"
+            <div align="center" style="padding-top: 20px;"><a href="https://github.com/ZHENFENG13/perfect-ssm"
                                                               target="_blank"
                                                               style="font-size: 20px;">github地址</a></div>
             <div align="center" style="padding-top: 50px">
-                <font color="grey" size="10">SSM Promotion</font>
+                <font color="grey" size="10">perfect ssm</font>
             </div>
         </div>
     </div>
