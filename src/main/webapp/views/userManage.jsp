@@ -16,7 +16,7 @@
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript">
-        var url = "${pageContext.request.contextPath}/users/";
+        var url = "${pageContext.request.contextPath}/users";
         var method;
 
         function searchUser() {

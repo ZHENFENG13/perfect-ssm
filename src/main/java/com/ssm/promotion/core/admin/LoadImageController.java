@@ -30,7 +30,7 @@ public class LoadImageController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
     public Result upload(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception {
         ServletContext sc = request.getSession().getServletContext();

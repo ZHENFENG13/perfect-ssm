@@ -94,7 +94,7 @@ public class UserController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
     public Result save(@RequestBody User user) throws Exception {
         int resultTotal = 0;
@@ -115,7 +115,7 @@ public class UserController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     @ResponseBody
     public Result update(@RequestBody User user) throws Exception {
         String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");

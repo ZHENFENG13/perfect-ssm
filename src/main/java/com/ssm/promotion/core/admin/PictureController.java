@@ -110,7 +110,7 @@ public class PictureController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
     public Result save(@RequestBody Picture picture)
             throws Exception {
@@ -136,7 +136,7 @@ public class PictureController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     @ResponseBody
     public Result update(@RequestBody Picture picture)
             throws Exception {
