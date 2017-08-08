@@ -16,10 +16,7 @@ function login() {
         url: "/users/cookie",
         data: $('#adminlogin').serialize(),
         success: function (result) {
-            console.log(typeof(result));
-            alert(1);
             if (result.resultCode == 200) {
-                alert(1);
                 setCookie("userName", result.data.currentUser.userName);
                 setCookie("roleName", result.data.currentUser.roleName);
                 window.location.href = "main.jsp";
