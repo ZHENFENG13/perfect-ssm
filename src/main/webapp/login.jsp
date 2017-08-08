@@ -12,11 +12,11 @@
     <meta name="keywords" content="perfect-ssm">
     <meta name="description" content="perfect-ssm">
 
-    <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="css/bootstrap.min14ed.css" rel="stylesheet">
+    <link href="css/font-awesome.min93e3.css" rel="stylesheet">
 
     <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="css/style.min862f.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
