@@ -1,168 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//Dtd HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>perfect-ssm系统登录</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>perfect-ssm - 登录</title>
+    <meta name="keywords" content="perfect-ssm">
+    <meta name="description" content="perfect-ssm">
+
+    <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/js/login.js"></script>
     <script src="/js/common.js"></script>
-    <style type=text/css>
-        body {
-            text-align: center;
-            padding-bottom: 0px;
-            background-color: #ddeef2;
-            margin: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px
-        }
-
-        A:link {
-            COLOR: #000000;
-            text-decoration: none
-        }
-
-        A:visited {
-            COLOR: #000000;
-            text-decoration: none
-        }
-
-        A:hover {
-            COLOR: #ff0000;
-            text-decoration: underline
-        }
-
-        A:active {
-            text-decoration: none
-        }
-
-        .input {
-            border-bottom: #ccc 1px solid;
-            border-left: #ccc 1px solid;
-            line-height: 20px;
-            width: 182px;
-            height: 20px;
-            border-top: #ccc 1px solid;
-            border-right: #ccc 1px solid
-        }
-
-        .input1 {
-            border-bottom: #ccc 1px solid;
-            border-left: #ccc 1px solid;
-            line-height: 20px;
-            width: 120px;
-            height: 20px;
-            border-top: #ccc 1px solid;
-            border-right: #ccc 1px solid;
-        }
-    </style>
-    <script type="text/javascript">
-        function login() {
-            var userName = $("#userName").val();
-            var password = $("#password").val();
-            var roleName = $("#roleName").val();
-            if (userName == null || userName == "") {
-                alert("用户名不能为空！");
-                return;
-            }
-            if (password == null || password == "") {
-                alert("密码不能为空！");
-                return;
-            }
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: "/users/cookie",
-                data: $('#adminlogin').serialize(),
-                success: function (result) {
-                    if (result.resultCode == 200) {
-                        setCookie("userName", result.data.currentUser.userName);
-                        setCookie("roleName", result.data.currentUser.roleName);
-                        window.location.href = "main.jsp";
-                    }
-                    ;
-
-                },
-                error: function () {
-                    alert("异常！");
-                }
-            });
-
-        }
-    </script>
 </head>
-<body>
-<form id="adminlogin" method="post"
-      name="adminlogin" onsubmit="return false" action="##">
-    <div></div>
-    <table style="margin: auto; width: 100%; height: 100%" border=0
-           cellSpacing=0 cellPadding=0>
-        <tbody>
-        <tr>
-            <td height=150>&nbsp;</td>
-        </tr>
-        <tr style="height: 254px">
-            <td>
-                <div style="margin: 0px auto; width: 936px"><img
-                        style="display: block" src="${pageContext.request.contextPath}/images/body_03.jpg"></div>
-                <div style="background-color: #278296">
-                    <div style="margin: 0px auto; width: 936px">
-                        <div
-                                style="BACKGROUND: url(${pageContext.request.contextPath}/images/body_05.jpg) no-repeat; height: 155px">
-                            <div
-                                    style="text-align: left; width: 265px; float: right; height: 125px; _height: 95px">
-                                <table border=0 cellSpacing=0 cellPadding=0 width="100%">
-                                    <tbody>
-                                    <tr>
-                                        <td style="height: 45px"><input type="text" class=input
-                                                                        value="${user.userName }" name="userName"
-                                                                        id="userName"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="password" class=input value="${user.password }" name="password"
-                                                   id="password"/></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div style="height: 1px; clear: both"></div>
-                            <div style="width: 380px; float: right; clear: both">
-                                <table border=0 cellSpacing=0 cellPadding=0 width=300>
-                                    <tbody>
 
-                                    <tr>
-                                        <td width=100 align=right><input
-                                                style="border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px"
-                                                id=btnLogin src="${pageContext.request.contextPath}/images/btn1.jpg"
-                                                type=image name=btnLogin onclick="javascript:login();">
-                                        </td>
-                                        <td width=100 align=middle><input
-                                                style="border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px"
-                                                id=btnReset src="${pageContext.request.contextPath}/images/btn2.jpg"
-                                                type=image name=btnReset
-                                                onclick="javascript:adminlogin.reset();return false;"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin: 0px auto; width: 936px"><img
-                        src="${pageContext.request.contextPath}/images/body_06.jpg"></div>
-            </td>
-        </tr>
-        <tr style="height: 30%">
-            <td>&nbsp;</td>
-        </tr>
-        </tbody>
-    </table>
-</form>
+<body class="gray-bg">
+
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">13</h1>
+
+        </div>
+        <h3>欢迎使用 perfect-ssm</h3>
+
+        <form class="m-t" role="form" id="adminlogin" method="post"
+              name="adminlogin" onsubmit="return false" action="##">
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="用户名" name="userName" id="userName" required="">
+
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="密码" name="password" id="password" required="">
+
+            </div>
+            <button type="button" class="btn btn-primary block full-width m-b" onclick="javascript:login();">登 录
+            </button>
+            <p class="text-muted text-center"><a href="##" onclick="javascript:adminlogin.reset();return false;">
+                <small>重置</small>
+            </a>
+            </p>
+
+        </form>
+    </div>
+</div>
+
 </body>
+
 </html>
-<script type=text/javascript>
-    if ('${errorMsg}' != '') {
-        alert('${errorMsg}');
-    }
-</script>
