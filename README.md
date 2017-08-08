@@ -14,7 +14,11 @@
 ##### 项目地址
   <a href='http://perfect-ssm.hanshuai.xin'>perfect-ssm</a> <br /> 
   登录名：admin <br /> 
-  密码：123456 <br />   
+  密码：123456
+  ![login-page](https://raw.githubusercontent.com/ZHENFENG13/resource/master/images/2017-08-08/login.png)
+
+##### Build Status
+
 [![Build Status](https://travis-ci.org/ZHENFENG13/perfect-ssm.svg?branch=master)](https://travis-ci.org/ZHENFENG13/perfect-ssm)
 ![Version 2.0.0](https://img.shields.io/badge/version-2.0.0-yellow.svg)
 [![License](https://img.shields.io/badge/license-apache-blue.svg)](https://github.com/ZHENFENG13/perfect-ssm/blob/master/LICENSE)
