@@ -10,6 +10,7 @@
 * [ ] [ssm-micro-service](https://github.com/ZHENFENG13/ssm-micro-service)：springcloud技术栈实现微服务化
 
 本项目为ssm系列的第二篇，**更完善的Spring+SpringMVC+Mybatis+easyUI后台管理系统**,相较于[ssm-demo](https://github.com/ZHENFENG13/ssm-demo)仓库,perfect-ssm仓库重新调整了目录结构,只保留了ssm-maven这个可以继续优化的目录并且对其中的代码做了删改,同时也增加了RESTful API和缓存模块。Wiki文档已经整理,可以到[Wiki Page](https://github.com/ZHENFENG13/perfect-ssm/wiki)查看,关于项目的简介及技术选型,也已经单独整理了一篇的文章--[项目简述及技术选型介绍.](http://www.cnblogs.com/han-1034683568/p/6440090.html)<br />
+
 [![Build Status](https://travis-ci.org/ZHENFENG13/perfect-ssm.svg?branch=master)](https://travis-ci.org/ZHENFENG13/perfect-ssm)
 ![Version 2.0.0](https://img.shields.io/badge/version-2.0.0-yellow.svg)
 [![License](https://img.shields.io/badge/license-apache-blue.svg)](https://github.com/ZHENFENG13/perfect-ssm/blob/master/LICENSE)
@@ -57,4 +58,5 @@
   2017-07-18 管理员模块接口RESTful改造。 <br /> 
   2017-07-20 代码整理。 <br /> 
   2017-08-06 架构及目录结构整理，Wiki文档编辑。<br/>
+  2017-08-08 ```http://perfect-ssm.hanshuai.xin```上线。<br/>
 
