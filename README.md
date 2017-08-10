@@ -33,7 +33,10 @@
  
 ## Documents 
 
-###### 待完善
+###### 进阶篇 
+
+* [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(一)设计一套好的RESTful API](http://www.cnblogs.com/han-1034683568/p/7196345.html)
+* [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(二)RESTful API实战笔记(接口设计及Java后端实现)](http://www.cnblogs.com/han-1034683568/p/7300547.html)
 
 ## Introduce
 
