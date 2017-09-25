@@ -27,8 +27,6 @@
 	String type = request.getParameter("type");
 	String grade = request.getParameter("grade");
 %>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/js/common.js"></script>
 <body style="margin:1px;" id="ff">
 <table id="dg" title="图片信息管理" class="easyui-datagrid" pagination="true"
        rownumbers="true" fit="true" data-options="pageSize:10"

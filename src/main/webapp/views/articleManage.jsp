@@ -23,8 +23,6 @@
             src="${pageContext.request.contextPath}/ueditor/ueditor.all.min.js">
 
     </script>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/js/common.js"></script>
 </head>
 <body style="margin:1px;" id="ff">
 <table id="dg" title="文本信息管理" class="easyui-datagrid" pagination="true"
