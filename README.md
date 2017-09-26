@@ -37,6 +37,8 @@
 
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(一)设计一套好的RESTful API](http://www.cnblogs.com/han-1034683568/p/7196345.html)
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(二)RESTful API实战笔记(接口设计及Java后端实现)](http://www.cnblogs.com/han-1034683568/p/7300547.html)
+* [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(三)使用ajax方法实现form表单的提交](http://www.cnblogs.com/han-1034683568/p/7199168.html)
+* [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(四)RESTful实战(前端代码修改)](http://www.cnblogs.com/han-1034683568/p/7552007.html)
 
 ## Introduce
 
