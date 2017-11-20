@@ -43,6 +43,7 @@
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(六)一定要RESTful吗？](http://www.cnblogs.com/han-1034683568/p/7663641.html)
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(七)一次线上Mysql数据库崩溃事故的记录](http://www.cnblogs.com/han-1034683568/p/7787659.html)
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(八)线上Mysql数据库崩溃事故的原因和处理](http://www.cnblogs.com/han-1034683568/p/7822237.html)
+* [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(九)Linux下安装redis及redis的常用命令和操作](http://www.cnblogs.com/han-1034683568/p/7862188.html)
 
 ## Introduce
 
