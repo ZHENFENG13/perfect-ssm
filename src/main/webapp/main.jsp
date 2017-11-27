@@ -22,7 +22,7 @@
 
         function addTab(url, text, iconCls) {
             var content = "<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src='${pageContext.request.contextPath}/views/"
-                    + url + "'></iframe>";
+                + url + "'></iframe>";
             $("#tabs").tabs("add", {
                 title: text,
                 iconCls: iconCls,
@@ -30,6 +30,7 @@
                 content: content
             });
         }
+
         function openTab(text, url, iconCls) {
             if ($("#tabs").tabs("exists", text)) {
                 $("#tabs").tabs("close", text);
@@ -42,14 +43,14 @@
 
         function logout() {
             $.messager
-                    .confirm(
-                            "系统提示",
-                            "您确定要退出系统吗",
-                            function (r) {
-                                if (r) {
-                                    clearCookie();
-                                }
-                            });
+                .confirm(
+                    "系统提示",
+                    "您确定要退出系统吗",
+                    function (r) {
+                        if (r) {
+                            clearCookie();
+                        }
+                    });
         }
     </script>
 <body class="easyui-layout">
@@ -84,10 +85,15 @@
              data-options="selected:true,iconCls:'icon-wenzhangs'"
              style="padding: 10px;height:10px;">
             <a
-                    href="javascript:openTab(' 文章管理','articleManage.jsp','icon-wenzhang')"
+                    href="javascript:openTab(' 文章管理-ue','articleManage-ue.jsp','icon-wenzhang')"
                     class="easyui-linkbutton"
                     data-options="plain:true,iconCls:'icon-wenzhang'"
-                    style="width: 150px;"> 文章管理</a>
+                    style="width: 150px;"> UEditor</a>
+            <a
+                    href="javascript:openTab(' 文章管理-ke','articleManage-ke.jsp','icon-wenzhang')"
+                    class="easyui-linkbutton"
+                    data-options="plain:true,iconCls:'icon-wenzhang'"
+                    style="width: 150px;"> kindEditor</a>
         </div>
         <div title="图片管理" data-options="iconCls:'icon-shouye'"
              style="padding:10px">
