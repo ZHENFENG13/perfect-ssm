@@ -93,7 +93,7 @@
                     href="javascript:openTab(' 文章管理-ke','articleManage-ke.jsp','icon-wenzhang')"
                     class="easyui-linkbutton"
                     data-options="plain:true,iconCls:'icon-wenzhang'"
-                    style="width: 150px;"> kindEditor</a>
+                    style="width: 150px;"> kindEditor(推荐)</a>
         </div>
         <div title="图片管理" data-options="iconCls:'icon-shouye'"
              style="padding:10px">
