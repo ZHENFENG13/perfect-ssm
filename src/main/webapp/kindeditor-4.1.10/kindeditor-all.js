@@ -7937,22 +7937,23 @@ K.extend(KSWFUpload, {
 					showError(itemDiv, self.options.errorMessage);
 				}
 			},
-			upload_success_handler : function(file, serverData) {
-				var itemDiv = K('div[data-id="' + file.id + '"]', self.bodyDiv).eq(0);
-				var data = {};
-				try {
-					data = K.json(serverData);
-				} catch (e) {
-					self.options.afterError.call(this, '<!doctype html><html>' + serverData + '</html>');
-				}
-				if (data.error !== 0) {
-					showError(itemDiv, K.DEBUG ? data.message : self.options.errorMessage);
-					return;
-				}
-				file.url = data.url;
-				K('.ke-img', itemDiv).attr('src', file.url).attr('data-status', file.filestatus).data('data', data);
-				K('.ke-status > div', itemDiv).hide();
-			}
+            upload_success_handler: function (file, serverData) {
+                var itemDiv = K('div[data-id="' + file.id + '"]', self.bodyDiv).eq(0);
+                var data = {};
+                try {
+                    data = K.json(serverData);
+                } catch (e) {
+                    self.options.afterError.call(this, '<!doctype html><html>' + serverData + '</html>');
+                }
+                if (data.resultCode != 200) {
+                    showError(itemDiv, K.DEBUG ? data.message : self.options.errorMessage);
+                    return;
+                }
+                data.url = "../"+data.data;
+                file.url = data.url;
+                K('.ke-img', itemDiv).attr('src', file.url).attr('data-status', file.filestatus).data('data', data);
+                K('.ke-status > div', itemDiv).hide();
+            }
 		};
 		self.swfu = new SWFUpload(settings);
 
