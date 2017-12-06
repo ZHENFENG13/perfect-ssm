@@ -199,6 +199,19 @@
         </dependency>
         <!-- End: druid -->
 
+        <!-- Start: redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.7.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <!-- End: redis -->
+
     </dependencies>
 
     <build>
