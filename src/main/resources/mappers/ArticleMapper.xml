@@ -33,7 +33,7 @@
         </where>
     </select>
 
-    <insert id="insertArticle" parameterType="Article">
+    <insert id="insertArticle" useGeneratedKeys="true" keyProperty="id" parameterType="Article">
 		insert into
 		ssm_article(article_title,article_create_date,article_content,add_name)
 		values(#{articleTitle},#{articleCreateDate},#{articleContent},#{addName})
