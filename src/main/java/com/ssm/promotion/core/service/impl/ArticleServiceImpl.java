@@ -1,20 +1,22 @@
 package com.ssm.promotion.core.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
 import com.ssm.promotion.core.common.Constants;
 import com.ssm.promotion.core.dao.ArticleDao;
 import com.ssm.promotion.core.entity.Article;
 import com.ssm.promotion.core.redis.RedisUtil;
 import com.ssm.promotion.core.service.ArticleService;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 
 @Service("articleService")
 public class ArticleServiceImpl implements ArticleService {
+
+    private static final Logger log = Logger.getLogger(ArticleService.class);
 
     @Resource
     private ArticleDao articleDao;
@@ -37,7 +39,7 @@ public class ArticleServiceImpl implements ArticleService {
             return 0;
         }
         if (articleDao.insertArticle(article) > 0) {
-            //向mysql数据库中插入成功后，存入redis中
+            log.info("insert article success,save article to redis");
             redisUtil.put(Constants.ARTICLE_CACHE_KEY + article.getId(), article);
             return 1;
         }
@@ -50,7 +52,7 @@ public class ArticleServiceImpl implements ArticleService {
             return 0;
         }
         if (articleDao.updArticle(article) > 0) {
-            //向mysql数据库中修改成功后，修改redis中的数据
+            log.info("update article success,delete article in redis and save again");
             redisUtil.del(Constants.ARTICLE_CACHE_KEY + article.getId());
             redisUtil.put(Constants.ARTICLE_CACHE_KEY + article.getId(), article);
             return 1;
@@ -65,17 +67,15 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article findById(String id) {
-        //首先通过redis查询
-        //此种写法存在缓存击穿问题
+        log.info("get article by id:"+id);
         Article article = (Article) redisUtil.get(Constants.ARTICLE_CACHE_KEY + id, Article.class);
-        //如果缓存中已经存在则直接返回，不再通过mysql数据库
         if (article != null) {
+            log.info("article in redis");
             return article;
         }
-        //如果缓存中不存在或者已过期，则依然通过mysql数据库查询
         Article articleFromMysql = articleDao.getArticleById(id);
         if (articleFromMysql != null) {
-            //查询到数据后，存入redis缓存中
+            log.info("get article from mysql and save article to redis");
             redisUtil.put(Constants.ARTICLE_CACHE_KEY + articleFromMysql.getId(), articleFromMysql);
             return articleFromMysql;
         }
