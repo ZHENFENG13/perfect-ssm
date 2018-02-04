@@ -62,12 +62,13 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public int deleteArticle(String id) {
+        redisUtil.del(Constants.ARTICLE_CACHE_KEY + id);
         return articleDao.delArticle(id);
     }
 
     @Override
     public Article findById(String id) {
-        log.info("get article by id:"+id);
+        log.info("get article by id:" + id);
         Article article = (Article) redisUtil.get(Constants.ARTICLE_CACHE_KEY + id, Article.class);
         if (article != null) {
             log.info("article in redis");
