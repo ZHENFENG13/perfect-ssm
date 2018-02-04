@@ -46,6 +46,8 @@
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(九)Linux下安装redis及redis的常用命令和操作](http://www.cnblogs.com/han-1034683568/p/7862188.html)
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(十)easyUI整合KindEditor详细教程](http://www.cnblogs.com/han-1034683568/p/7930542.html)
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(十一)redis密码设置、安全设置](http://www.cnblogs.com/han-1034683568/p/7978577.html)
+* [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇（十二）Spring集成Redis缓存](http://www.cnblogs.com/han-1034683568/p/7994231.html)
+
 
 ## Introduce
 
