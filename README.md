@@ -47,6 +47,7 @@
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(十)easyUI整合KindEditor详细教程](http://www.cnblogs.com/han-1034683568/p/7930542.html)
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(十一)redis密码设置、安全设置](http://www.cnblogs.com/han-1034683568/p/7978577.html)
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇（十二）Spring集成Redis缓存](http://www.cnblogs.com/han-1034683568/p/7994231.html)
+* [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇（十三）MyBatis+MySQL返回插入的主键id](http://www.cnblogs.com/han-1034683568/p/8305122.html)
 
 
 ## Introduce
@@ -67,10 +68,11 @@
 - 后端界面则使用easyui进行搭建 <br /> 
 
 ## Logs
-  2017-07-07 perfect-ssm项目初始化。 <br /> 
-  2017-07-17 文章模块和图片模块接口RESTful改造。 <br /> 
-  2017-07-18 管理员模块接口RESTful改造。 <br /> 
-  2017-07-20 代码整理。 <br /> 
-  2017-08-06 架构及目录结构整理，Wiki文档编辑。<br/>
-  2017-08-08 ```http://perfect-ssm.hanshuai.xin```上线。<br/>
+  2017-07 perfect-ssm项目初始化。 <br /> 
+  2017-07 文章模块和图片模块接口RESTful改造。 <br /> 
+  2017-07 管理员模块接口RESTful改造。 <br /> 
+  2017-07 代码整理。 <br /> 
+  2017-08 架构及目录结构整理，Wiki文档编辑。<br/>
+  2017-08 ```http://perfect-ssm.hanshuai.xin```上线。<br/>
+  2018-02 整合Redis<br/>
 
