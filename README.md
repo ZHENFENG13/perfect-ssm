@@ -57,6 +57,7 @@
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(十一)redis密码设置、安全设置](http://www.cnblogs.com/han-1034683568/p/7978577.html)
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇（十二）Spring集成Redis缓存](http://www.cnblogs.com/han-1034683568/p/7994231.html)
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇（十三）MyBatis+MySQL返回插入的主键id](http://www.cnblogs.com/han-1034683568/p/8305122.html)
+* [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇（十四）Redis缓存正确的使用姿势](http://www.cnblogs.com/han-1034683568/p/8406497.html)
 
 
 ## Introduce
