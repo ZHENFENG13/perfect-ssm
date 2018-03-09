@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import com.ssm.promotion.core.dao.PictureDao;
 import com.ssm.promotion.core.entity.Picture;
 import com.ssm.promotion.core.service.PictureService;
+import com.ssm.promotion.core.util.AntiXssUtil;
 import org.springframework.stereotype.Service;
 
 
@@ -31,6 +32,7 @@ public class PictureServiceImpl implements PictureService {
         if (picture.getPath() == null || getTotalPicture(null) > 90 || picture.getPath().length() > 100 || picture.getUrl().length() > 100) {
             return 0;
         }
+        picture.setUrl(AntiXssUtil.replaceHtmlCode(picture.getUrl()));
         return pd.insertPicture(picture);
     }
 
@@ -39,6 +41,7 @@ public class PictureServiceImpl implements PictureService {
         if (picture.getPath() == null || getTotalPicture(null) > 90 || picture.getPath().length() > 100 || picture.getUrl().length() > 100) {
             return 0;
         }
+        picture.setUrl(AntiXssUtil.replaceHtmlCode(picture.getUrl()));
         return pd.updPicture(picture);
     }
 

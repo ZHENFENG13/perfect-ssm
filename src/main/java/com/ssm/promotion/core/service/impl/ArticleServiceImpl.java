@@ -5,6 +5,7 @@ import com.ssm.promotion.core.dao.ArticleDao;
 import com.ssm.promotion.core.entity.Article;
 import com.ssm.promotion.core.redis.RedisUtil;
 import com.ssm.promotion.core.service.ArticleService;
+import com.ssm.promotion.core.util.AntiXssUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,8 @@ public class ArticleServiceImpl implements ArticleService {
         if (article.getArticleTitle() == null || article.getArticleContent() == null || getTotalArticle(null) > 90 || article.getArticleContent().length() > 50000) {
             return 0;
         }
+        article.setArticleTitle(AntiXssUtil.replaceHtmlCode(article.getArticleTitle()));
+        article.setArticleContent(AntiXssUtil.replaceHtmlCode(article.getArticleContent()));
         if (articleDao.insertArticle(article) > 0) {
             log.info("insert article success,save article to redis");
             redisUtil.put(Constants.ARTICLE_CACHE_KEY + article.getId(), article);
@@ -51,6 +54,8 @@ public class ArticleServiceImpl implements ArticleService {
         if (article.getArticleTitle() == null || article.getArticleContent() == null || getTotalArticle(null) > 90 || article.getArticleContent().length() > 50000) {
             return 0;
         }
+        article.setArticleTitle(AntiXssUtil.replaceHtmlCode(article.getArticleTitle()));
+        article.setArticleContent(AntiXssUtil.replaceHtmlCode(article.getArticleContent()));
         if (articleDao.updArticle(article) > 0) {
             log.info("update article success,delete article in redis and save again");
             redisUtil.del(Constants.ARTICLE_CACHE_KEY + article.getId());

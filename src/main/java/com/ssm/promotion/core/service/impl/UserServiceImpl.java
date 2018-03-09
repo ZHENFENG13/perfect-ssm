@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.ssm.promotion.core.entity.User;
+import com.ssm.promotion.core.util.AntiXssUtil;
 import org.springframework.stereotype.Service;
 
 import com.ssm.promotion.core.dao.UserDao;
@@ -38,6 +39,7 @@ public class UserServiceImpl implements UserService {
         if ("admin".equals(user.getUserName())) {
             return 0;
         }
+        user.setUserName(AntiXssUtil.replaceHtmlCode(user.getUserName()));
         return userDao.updateUser(user);
     }
 
@@ -51,6 +53,7 @@ public class UserServiceImpl implements UserService {
         if (user.getUserName() == null || user.getPassword() == null || getTotalUser(null) > 90) {
             return 0;
         }
+        user.setUserName(AntiXssUtil.replaceHtmlCode(user.getUserName()));
         return userDao.addUser(user);
     }
 
