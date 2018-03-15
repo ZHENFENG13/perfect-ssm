@@ -40,7 +40,6 @@ public class ArticleServiceImpl implements ArticleService {
             return 0;
         }
         article.setArticleTitle(AntiXssUtil.replaceHtmlCode(article.getArticleTitle()));
-        article.setArticleContent(AntiXssUtil.replaceHtmlCode(article.getArticleContent()));
         if (articleDao.insertArticle(article) > 0) {
             log.info("insert article success,save article to redis");
             redisUtil.put(Constants.ARTICLE_CACHE_KEY + article.getId(), article);
@@ -55,7 +54,6 @@ public class ArticleServiceImpl implements ArticleService {
             return 0;
         }
         article.setArticleTitle(AntiXssUtil.replaceHtmlCode(article.getArticleTitle()));
-        article.setArticleContent(AntiXssUtil.replaceHtmlCode(article.getArticleContent()));
         if (articleDao.updArticle(article) > 0) {
             log.info("update article success,delete article in redis and save again");
             redisUtil.del(Constants.ARTICLE_CACHE_KEY + article.getId());
