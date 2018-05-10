@@ -72,6 +72,14 @@
             <div align="center" style="padding-top: 20px;"><a href="https://github.com/ZHENFENG13/perfect-ssm"
                                                               target="_blank"
                                                               style="font-size: 20px;">github地址</a></div>
+            <div align="center" style="padding-top: 20px;"><a
+                    href="https://download.csdn.net/download/zhenfengshisan/9765855"
+                    target="_blank"
+                    style="font-size: 20px;">ssm-demo源码下载</a></div>
+            <div align="center" style="padding-top: 20px;"><a
+                    href="https://download.csdn.net/download/zhenfengshisan/9813721"
+                    target="_blank"
+                    style="font-size: 20px;">ssm-maven源码下载</a></div>
             <div align="center" style="padding-top: 50px">
                 <font color="grey" size="10">perfect ssm</font>
             </div>
