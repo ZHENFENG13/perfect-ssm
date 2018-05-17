@@ -19,7 +19,7 @@
 
 ##### 项目地址
 
-  <a href='http://perfect-ssm.hanshuai.xin'>perfect-ssm</a> <br /> 
+  <a href='http://perfect-ssm.13blog.site'>perfect-ssm</a> <br /> 
   登录名：admin <br /> 
   密码：123456
   ![login-page](https://raw.githubusercontent.com/ZHENFENG13/resource/master/images/2017-08-08/login.png)
