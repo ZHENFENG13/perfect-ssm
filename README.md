@@ -240,6 +240,6 @@
   2017-07 管理员模块接口RESTful改造。 <br /> 
   2017-07 代码整理。 <br /> 
   2017-08 架构及目录结构整理，Wiki文档编辑。<br/>
-  2017-08 ```http://perfect-ssm.hanshuai.xin```上线。<br/>
+  2017-08 ```http://perfect-ssm.13blog.site```上线。<br/>
   2018-02 整合Redis<br/>
 
