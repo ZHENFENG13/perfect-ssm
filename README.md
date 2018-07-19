@@ -128,6 +128,8 @@
  
 ## Documents 
 
+* [x] [GitChat达人课-SSM搭建精美实用的管理系统](https://gitbook.cn/gitchat/column/5b4dae389bcda53d07056bc9)
+
 ###### 进阶篇 
 
 * [x] [Spring+SpringMVC+MyBatis+easyUI整合进阶篇(一)设计一套好的RESTful API](http://www.cnblogs.com/han-1034683568/p/7196345.html)
